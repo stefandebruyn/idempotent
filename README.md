@@ -1,10 +1,12 @@
 # idempotent
 
-A tool for generating Java test cases. Written for use in UT Austin's CS 314 Data Structures class, which puts emphasis on test thoroughness and disallows testing frameworks.
+A tool for generating Java test suites. Written for use in UT Austin's CS 314 Data Structures class, which puts emphasis on test thoroughness and disallows testing frameworks.
 
-`C:\>py idempotent.py <input_file>`
+The script takes a source file of macros and translates it into a functional Java class.
 
-## Writing the Input Files
+`C:\>py idempotent.py <source_file>`
+
+## Writing the Source Files
 
 ### Imports
 
