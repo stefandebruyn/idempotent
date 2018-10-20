@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 ### Testgroups
 
-A testgroup is a series of tests that test the same method. The following line defines a testgroup for the method `shift(...)`.
+A testgroup is a series of tests that test the same method. The following line defines a testgroup for some method `add`.
 
 ```java
 testgroup add
@@ -31,11 +31,11 @@ expected = 5
 actual = 2, 3
 ```
 
-The value of `actual` is determined by calling the testgroup method with the arguments following the assignment operator.
+The value of `actual` is determined by calling the testgroup method with the arguments following the assignment operator (e.g. `actual = 2, 3` => `actual = add(2, 3)`)
 
 ### Equators
 
-Some tests will compare objects whose equivalences cannot be determined with the usual `equals(Object)`. For cases such as this, Equators can be defined.
+Some tests will compare objects whose equivalence cannot be determined with the usual `equals`. For cases such as this, Equators can be defined.
 
 ```java
 equator arrayEquator = equate(Object a, Object b) { return Arrays.equals((int[])a, (int[])b); }
@@ -53,7 +53,7 @@ actual = new double[] {1.0, 0.5, 0.35}, new double[] {1.0, 7.0, -2.0}
 
 ### Translators
 
-The auto-generated `runTest` method will print string representations of the expected and actual values. In cases where the default `toString()` is not preferable, Translators can be used to overwrite it.
+The auto-generated `runTest` method will print string representations of the expected and actual values. In cases where the default `toString` is not preferable, Translators can be used to overwrite it.
 
  ```java
  translator arrayTranslator = translate(Object obj) { return Arrays.toString((int[])obj); }
@@ -66,11 +66,11 @@ The auto-generated `runTest` method will print string representations of the exp
  ### Put it all together
 
 `example.txt`
- ```java
- import java.util.Arrays;
+```java
+import java.util.Arrays;
 
- equator arrayEquator = equate(Object a, Object b) { return Arrays.equals((int[])a, (int[])b); }
- translator arrayTranslator = translate(Object obj) { return Arrays.toString((int[])obj); }
+equator arrayEquator = equate(Object a, Object b) { return Arrays.equals((int[])a, (int[])b); }
+translator arrayTranslator = translate(Object obj) { return Arrays.toString((int[])obj); }
 
 testgroup dotProduct
 
